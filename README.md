@@ -4,6 +4,9 @@ Colorize grayscale photos with a pretrained Lab-space network (Zhang et al., ECC
 
 The original notebook `Colorization_of_BW_pictures.ipynb` trains a convolutional autoencoder on the `Train/` images. The Streamlit app uses a stronger ImageNet-trained colorizer so arbitrary uploads get plausible color, not colors copied from another photo.
 
+## Live Demo
+https://back2color-juosuvh4tvhf4n9an3appu4.streamlit.app/
+
 ## Streamlit app
 
 ```text
