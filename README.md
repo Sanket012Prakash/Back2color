@@ -13,7 +13,6 @@ backend/models/      colorizer.onnx (downloaded on first run, ~129 MB)
 Train/               sample photos
 .streamlit/          theme and upload limits
 requirements.txt     Python packages for Streamlit
-packages.txt         system libraries for Streamlit Community Cloud
 ```
 
 ### Run locally
@@ -27,7 +26,7 @@ Then open [http://localhost:8501](http://localhost:8501). Drop a photo or click 
 
 ### Deploy on Streamlit Community Cloud
 
-1. Push this repo to GitHub (include `streamlit_app.py`, `requirements.txt`, `packages.txt`, `backend/`, and `Train/` samples).
+1. Push this repo to GitHub (include `streamlit_app.py`, `requirements.txt`, `backend/`, and `Train/` samples).
 2. Go to [share.streamlit.io](https://share.streamlit.io) and sign in.
 3. **New app** → pick the repo, branch, and `streamlit_app.py`.
 4. Deploy. The colorization model is gitignored and will download on first run.
