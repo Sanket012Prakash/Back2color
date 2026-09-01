@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chroma — Colorize Black &amp; White Pictures</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='7' fill='%23e0b25a'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Sora:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css?v=3" />
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+    <header class="top">
+      <div class="brand">
+        <span class="mark" aria-hidden="true"></span>
+        <span>Chroma</span>
+      </div>
+      <p class="status" id="engineStatus">Connecting to backend…</p>
+    </header>
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow">ImageNet colorization model</p>
+        <h1>Bring black &amp; white photographs back to life.</h1>
+        <p class="lede">
+          Click a sample or drop any photo. It is converted to grayscale, then a
+          pretrained network predicts colors for <em>that</em> picture — sky,
+          skin, grass, and so on — instead of copying colors from the training folder.
+        </p>
+      </section>
+
+      <section class="workspace">
+        <div class="drop" id="dropzone">
+          <input id="fileInput" class="file-input" type="file" accept="image/*" />
+          <div class="drop-copy">
+            <strong>Drop a photo here</strong>
+            <span>or click to browse · JPG, PNG, WEBP · up to 8&nbsp;MB</span>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="colorizeBtn" type="button" disabled>Colorize again</button>
+          <button id="downloadBtn" type="button" class="ghost" disabled>Download</button>
+          <button id="resetBtn" type="button" class="ghost" disabled>Reset</button>
+          <p class="hint" id="hint">Click a sample below or drop a photo to begin.</p>
+        </div>
+
+        <div class="stage" id="stage" hidden>
+          <figure class="pane">
+            <img id="beforeImage" alt="Black and white original" />
+            <figcaption>Original</figcaption>
+          </figure>
+          <figure class="pane">
+            <img id="afterImage" alt="Colorized result" />
+            <figcaption>Colorized</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="samples">
+        <h2>Try a sample</h2>
+        <p class="lede tight">Each thumbnail is grayscale. Click one to restore color.</p>
+        <div class="sample-grid" id="sampleGrid"></div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Open <a href="http://127.0.0.1:8000">http://127.0.0.1:8000</a></p>
+    </footer>
+
+    <div class="busy" id="busy" hidden>
+      <div class="spinner"></div>
+      <p>Painting in color…</p>
+    </div>
+
+    <script src="./app.js?v=3"></script>
+  </body>
+</html>

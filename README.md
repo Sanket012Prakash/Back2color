@@ -1,0 +1,56 @@
+# Colorization of Black and White pictures
+
+Colorize grayscale photos with a pretrained Lab-space network (Zhang et al., ECCV 2016). The app keeps lightness **L** and predicts the color channels **ab**, then converts back to RGB.
+
+The original notebook `Colorization_of_BW_pictures.ipynb` trains a convolutional autoencoder on the `Train/` images. The Streamlit app uses a stronger ImageNet-trained colorizer so arbitrary uploads get plausible color, not colors copied from another photo.
+
+## Streamlit app
+
+```text
+streamlit_app.py     Streamlit UI (upload, samples, download)
+backend/colorize.py  Zhang ONNX colorization
+backend/models/      colorizer.onnx (downloaded on first run, ~129 MB)
+Train/               sample photos
+.streamlit/          theme and upload limits
+requirements.txt     Python packages for Streamlit
+packages.txt         system libraries for Streamlit Community Cloud
+```
+
+### Run locally
+
+```bash
+pip install -r requirements.txt
+streamlit run streamlit_app.py
+```
+
+Then open [http://localhost:8501](http://localhost:8501). Drop a photo or click a sample. On first launch the app downloads `backend/models/colorizer.onnx` if it is missing.
+
+### Deploy on Streamlit Community Cloud
+
+1. Push this repo to GitHub (include `streamlit_app.py`, `requirements.txt`, `packages.txt`, `backend/`, and `Train/` samples).
+2. Go to [share.streamlit.io](https://share.streamlit.io) and sign in.
+3. **New app** → pick the repo, branch, and `streamlit_app.py`.
+4. Deploy. The colorization model is gitignored and will download on first run.
+
+Main file: `streamlit_app.py`  
+Python file: `requirements.txt`
+
+## Notebook autoencoder
+
+RGB is converted to Lab before training. The encoder uses stride-2 convolutions; the decoder upsamples and predicts two `tanh` filters for *ab*. Loss is MSE; the optimizer is Adam.
+
+```bash
+cd backend
+pip install -r requirements.txt
+python train.py 8
+```
+
+## Optional FastAPI UI
+
+```bash
+pip install -r backend/requirements.txt
+cd backend
+python -m uvicorn app:app --host 127.0.0.1 --port 8000
+```
+
+Open [http://127.0.0.1:8000](http://127.0.0.1:8000).

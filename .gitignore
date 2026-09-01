@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+backend/models/*.caffemodel
+backend/models/*.onnx
+backend/models/*.part
+backend/models/*.npy
+backend/models/*.keras
+.DS_Store
