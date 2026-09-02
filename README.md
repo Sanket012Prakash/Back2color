@@ -27,16 +27,6 @@ streamlit run streamlit_app.py
 
 Then open [http://localhost:8501](http://localhost:8501). Drop a photo or click a sample. On first launch the app downloads `backend/models/colorizer.onnx` if it is missing.
 
-### Deploy on Streamlit Community Cloud
-
-1. Push this repo to GitHub (include `streamlit_app.py`, `requirements.txt`, `backend/`, and `Train/` samples).
-2. Go to [share.streamlit.io](https://share.streamlit.io) and sign in.
-3. **New app** → pick the repo, branch, and `streamlit_app.py`.
-4. Deploy. The colorization model is gitignored and will download on first run.
-
-Main file: `streamlit_app.py`  
-Python file: `requirements.txt`
-
 ## Notebook autoencoder
 
 RGB is converted to Lab before training. The encoder uses stride-2 convolutions; the decoder upsamples and predicts two `tanh` filters for *ab*. Loss is MSE; the optimizer is Adam.
