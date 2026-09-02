@@ -10,13 +10,12 @@ https://back2color-juosuvh4tvhf4n9an3appu4.streamlit.app/
 ## Streamlit app
 
 ```text
-streamlit_app.py     Streamlit UI (upload, samples, download)
-backend/colorize.py  Zhang ONNX colorization
-backend/models/      colorizer.onnx (downloaded on first run, ~129 MB)
-Train/               sample photos
-.streamlit/          theme and upload limits
-requirements.txt     Python packages for Streamlit
-```
+streamlit_app.py        Streamlit UI for uploads, samples, and downloads
+backend/colorize.py     Zhang ONNX-based image colorization
+backend/models/         Colorization model (~129 MB, downloaded on first run)
+Train/                   Sample images for testing
+.streamlit/              Theme and upload configuration
+requirements.txt         Required Python packages
 
 ### Run locally
 
